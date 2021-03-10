@@ -17,18 +17,16 @@ public class Auto {
         }
         return cantidad;
     }
-    public String verificarIntegridad(){
-        int reg = this.registro;
-        for (Asiento asiento:asientos) {
-            if(asiento != null) {
-                if (reg == asiento.registro && reg == this.motor.registro) {
-                    continue;
-                } else {
-                    return "las piezas no son originales";
-                }
+    public String verificarIntegridad() {
+    	String tatus = "Auto original";
+        for (int i = 0; i < asientos.length; i++) {
+            if ( (asientos[i]!=null) &&  (!(motor.registro == registro) || !(registro == asientos[i].registro))) {
+                tatus = "Las piezas no son originales";
+                break;
             }
         }
-        return "auto original";
+        return tatus;
+
     }
 
 }
